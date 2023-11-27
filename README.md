@@ -1,0 +1,1 @@
+Este repositorio abriga todo o código e todas as pastas referentes ao trabalho da unidade curricular Análise e Conceção de Sistemas de Informação.

@@ -1,0 +1,1 @@
+Este ficheiro tem o proposito de conter todas as pasta usadas no niop
