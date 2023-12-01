@@ -11,6 +11,14 @@ public class KafkaListeners {
             groupId = "groupId"
     )
     void listener(String data){
-        System.out.println("Listener Received: " + data + " !!");
+        System.out.println("Listener Received <teste>: " + data + " !!");
+    }
+
+    @KafkaListener(
+            topics = "qrcode",
+            groupId = "groupId"
+    )
+    void validateQRCode(String data){
+        System.out.println("Listener Received <qrcode>: " + data + " !!");
     }
 }

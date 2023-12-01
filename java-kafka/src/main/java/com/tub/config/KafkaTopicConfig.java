@@ -11,4 +11,9 @@ public class KafkaTopicConfig {
     public NewTopic testTopic(){
         return TopicBuilder.name("teste").build();
     }
+
+    @Bean
+    public NewTopic qrCodeTopic(){
+        return TopicBuilder.name("qrcode").build();
+    }
 }
