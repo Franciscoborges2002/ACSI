@@ -1,8 +1,8 @@
 # Iniciar
-Abrir uma janeça com:
+Abrir uma janeça com, iniciar zookeeper:
 .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
 
-Abrir outra janela com:
+Abrir outra janela com, iniciar o kafka:
 .\bin\windows\kafka-server-start.bat .\config\server.properties
 
 # Criar um topico:
