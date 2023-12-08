@@ -13,11 +13,11 @@ public class JavaKafkaApplication {
         SpringApplication.run(JavaKafkaApplication.class, args);
     }
 
-    @Bean
+    /*@Bean
     CommandLineRunner commandLineRunner(KafkaTemplate<String, String> kafkaTemplate){
         return args -> {
             kafkaTemplate.send("qrcode", "Hello kafka!");
         };
-    }
+    }*/
 
 }

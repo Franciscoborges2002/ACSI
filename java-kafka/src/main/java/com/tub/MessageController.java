@@ -22,4 +22,12 @@ public class MessageController {
         }
 
     }
+
+    /*@PostMapping
+    public void publishPedidoHistorico(@RequestParam Map<String, String> body) {
+        for (Map.Entry<String, String> entry : body.entrySet()) {
+            kafkaTemplate.send("historicoViagem", entry.getKey());
+        }
+
+    }*/
 }
