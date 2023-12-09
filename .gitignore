@@ -1,3 +1,9 @@
+# Não passar os logs do kafka
 kafka/logs
+
+# Não enviar os ficheiros de teste do niop
 niop/a.txt
 niop/b.txt
+
+# Não enviar o .env do mysql
+mySQL/.env
