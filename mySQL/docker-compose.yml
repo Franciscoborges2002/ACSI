@@ -14,8 +14,14 @@ services:
     expose: # Opens port 3306 on the container
       - '3306'
     volumes: # Where our data will be persisted
-      - my_sql_tub:/var/lib/mysql
+      - tub:/var/lib/mysql
+      #- bd/tub.sql:/bd/import/bd.sql
+    command: 
+      #- 'mysql -u root -p tub'
+      #- 'CREATE DATABASE tub;'
+      #- 'USE tub;'
+      #- 'SOURCE /bd/import/bd.sql;'
 
 volumes:
-  my_sql_tub:
+  tub:
     driver: local
