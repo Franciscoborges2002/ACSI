@@ -36,4 +36,19 @@ public class KafkaTopicConfig {
     public NewTopic respostaQrCodeTopic(){
         return TopicBuilder.name("respostaQrCode").build();
     }
+
+    @Bean
+    public NewTopic lugaresLivresTopic(){
+        return TopicBuilder.name("lugaresLivres").build();
+    }
+
+    @Bean
+    public NewTopic mandarEmailTopic(){
+        return TopicBuilder.name("enviarEmail").build();
+    }
+
+    @Bean
+    public NewTopic ocupacaoParqueTopic(){
+        return TopicBuilder.name("ocupacaoParque").build();
+    }
 }

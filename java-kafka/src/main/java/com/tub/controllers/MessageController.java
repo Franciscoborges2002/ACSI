@@ -16,23 +16,6 @@ public class MessageController {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    /*@PostMapping
-    public void publishQrCode(@RequestBody String body, @RequestHeader Map<String, String> headers) {
-        System.out.println("body: " + body);
-        /*for (Map.Entry<String, String> entry : body.entrySet()) {
-            kafkaTemplate.send("qrcode", entry.getKey());
-        }
-
-        headers.forEach((key, value) -> {
-            System.out.println((String.format("Header '%s' = %s", key, value)));
-        });
-
-        body = body.replace("%2C", ",");
-
-        System.out.println(body);
-
-    }*/
-
     @PostMapping("/qrcode")
     public void publishQrCode(@RequestParam Map<String, String> body) {
         for (Map.Entry<String, String> entry : body.entrySet()) {
@@ -54,12 +37,4 @@ public class MessageController {
 
 
     }
-
-    /*@PostMapping
-    public void publishPedidoHistorico(@RequestParam Map<String, String> body) {
-        for (Map.Entry<String, String> entry : body.entrySet()) {
-            kafkaTemplate.send("historicoViagem", entry.getKey());
-        }
-
-    }*/
 }

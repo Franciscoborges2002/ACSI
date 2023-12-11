@@ -33,6 +33,9 @@ public class KafkaListeners {
 
     private KafkaTemplate<String, String> kafkaTemplate;
 
+    private final String stringViaVerde = "{lugaresOcupados:[1,1,1,0,0]}";
+    private int a = 0;
+
     public KafkaListeners(KafkaTemplate<String, String> kafkaTemplate){
         this.kafkaTemplate = kafkaTemplate;
     }
@@ -230,6 +233,47 @@ public class KafkaListeners {
     )
     void listenerLugaresLivres(String data){//Listener para depois enviar mensagem
         System.out.println("Listener Received <lugaresLivres>: " + data + " !!");
+
+        JSONObject viaVerde = new JSONObject(stringViaVerde);
+
+        System.out.println(viaVerde.toString());
+        int[] arrayViaVerde = {1,1,1,0,0};
+        /*Object[] objectArray = (Object []) a;
+        int[] arrayViaVerde = (int[])objectArray[0];*/
+        int numeroLugaresOcupados = 0;
+
+        for (int i = 0; i < arrayViaVerde.length ; i++) {
+            if (arrayViaVerde[i] == 1) {
+                numeroLugaresOcupados++;
+            }
+        }
+
+        int lugaresDisponiveisViaVerde = arrayViaVerde.length - numeroLugaresOcupados;
+
+        if(parseInt(data) < lugaresDisponiveisViaVerde){//Mandar para o tópico que de enviar email
+            System.out.println("Enviar Email");
+            kafkaTemplate.send("enviarEmail", "{'message': 'Lugares ocupados detetados nas camaras maior que os recebidos pela via verde'}");
+        }else{//Proceder para a analise de informações
+            kafkaTemplate.send("ocupacaoParque", "{'camara': {'lugaresLivres':'" + data + "'}, 'viaVerde'{'lugaresLivres':'" + lugaresDisponiveisViaVerde + "'}");
+        }
+    }
+
+    @KafkaListener(
+            topics = "enviarEmail",
+            groupId = "groupId"
+    )
+    void listenerEnviarEmail(String data){//Listener para depois enviar mensagem
+        System.out.println("Listener Received <enviarEmail>: " + data + " !!");
+    }
+
+    @KafkaListener(
+            topics = "ocupacaoParque",
+            groupId = "groupId"
+    )
+    void listenerOcupacaoParque(String data){//Listener para depois enviar mensagem
+        System.out.println("Listener Received <ocupacaoParque>: " + data + " !!");
+
+
 
     }
 }
