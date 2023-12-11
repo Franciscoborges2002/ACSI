@@ -7,5 +7,6 @@ Este repositorio abriga todo o código e todas as pastas referentes ao trabalho 
 - niop para processamento de imagem low code
 - openCV em python para processar imagem em tempo real através de uma IPCamera(Droidcam)
 
-## Modulos
-[Link](./Modulos.md)
+## [Modulos](./Modulos.md)
+
+## [Diagramas](./Diagramas/README.md)
