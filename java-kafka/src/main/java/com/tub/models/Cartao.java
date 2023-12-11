@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Cartao {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name = "ID")
+    @Column(name = "id")
     private Integer id;
     private Boolean valido;
 
@@ -19,6 +19,10 @@ public class Cartao {
 
     public Cartao(Boolean valido) {
         this.valido = valido;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public Boolean getValido() {
@@ -35,5 +39,14 @@ public class Cartao {
 
     public void setContaAssociada(Conta contaAssociada) {
         this.contaAssociada = contaAssociada;
+    }
+
+    @Override
+    public String toString() {
+        return "Cartao{" +
+                "id=" + id +
+                ", valido=" + valido +
+                //", contaAssociada=" + contaAssociada +
+                '}';
     }
 }

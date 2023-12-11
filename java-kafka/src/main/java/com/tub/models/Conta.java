@@ -3,22 +3,27 @@ package com.tub.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 
 @Entity
 @Table(name = "conta")
 public class Conta {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name = "ID")
+    @Column(name = "id")
     private Integer id;
 
     private String name;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cartao_id", referencedColumnName = "ID")
+    @JoinColumn(name = "cartao_id", referencedColumnName = "id")
     private Cartao cartao;
 
     private Integer pontos;
+
+    @OneToMany(mappedBy="contaViajante")
+    private List<Viagem> viagens;
 
     public Conta() {
     }
@@ -38,6 +43,14 @@ public class Conta {
         return id;
     }
 
+    public Cartao getCartao() {
+        return cartao;
+    }
+
+    public void setCartao(Cartao cartao) {
+        this.cartao = cartao;
+    }
+
     public String getName() {
         return name;
     }
@@ -46,11 +59,21 @@ public class Conta {
         this.name = name;
     }
 
-    public Cartao getCartao() {
-        return cartao;
+    public Integer getPontos() {
+        return pontos;
     }
 
-    public void setCartao(Cartao cartao) {
-        this.cartao = cartao;
+    public void setPontos(Integer pontos) {
+        this.pontos = pontos;
+    }
+
+    @Override
+    public String toString() {
+        return "Conta{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", cartao=" + cartao +
+                ", pontos=" + pontos +
+                '}';
     }
 }

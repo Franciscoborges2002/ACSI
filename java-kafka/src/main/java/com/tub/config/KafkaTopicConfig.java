@@ -21,4 +21,19 @@ public class KafkaTopicConfig {
     public NewTopic historicoViagemTopic(){
         return TopicBuilder.name("historicoViagem").build();
     }
+
+    @Bean
+    public NewTopic verificarInformacoesQrCodeTopic(){
+        return TopicBuilder.name("verificarInformacoesQrCode").build();
+    }
+
+    @Bean
+    public NewTopic registarTentativaTopic(){
+        return TopicBuilder.name("registarTentativa").build();
+    }
+
+    @Bean
+    public NewTopic respostaQrCodeTopic(){
+        return TopicBuilder.name("respostaQrCode").build();
+    }
 }

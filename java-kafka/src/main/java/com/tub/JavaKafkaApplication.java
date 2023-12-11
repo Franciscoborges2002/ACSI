@@ -25,13 +25,13 @@ public class JavaKafkaApplication {
         return args -> {
 
 
-            cartaoRepository.save(new Cartao(true));
+            //cartaoRepository.save(new Cartao(true));
 
-            System.out.println("cartoes" + cartaoRepository.findAll().toString());
+            System.out.println("cartoes" + cartaoRepository.findAll());
 
-            Cartao cartao = new Cartao(true);
+            //Cartao cartao = new Cartao(true);
 
-            contaRepository.save(new Conta("Francisco" ,cartao, 0 ));
+            //contaRepository.save(new Conta("Francisco" ,cartao, 0 ));
 
             //kafkaTemplate.send("qrcode", "Hello kafka!");
         };
