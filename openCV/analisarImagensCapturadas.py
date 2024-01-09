@@ -5,12 +5,16 @@ from confluent_kafka import Producer
 
 cap = cv2.VideoCapture('http://192.168.28.179:4747/video')
 
-#parking_slots = [(100, 280), (220, 280), (325, 280), (435, 280), (520, 280)]
-parking_slots = [(200, 240), (200, 90)]
-rect_width, rect_height = 260, 100
-color = (0,0,180)
-thick = 3
-threshold = 200
+#parking_slots = [(100, 280), (220, 280), (325, 280), (435, 280), (520, 280)] -> Maquete
+parking_slots = [(200, 240), (200, 90)]# -> Estacionamento real
+#rect_width, rect_height = 50, 63# -> Maquete
+rect_width, rect_height = 260, 100# -> Estacionamento real
+color = (0,0,180)# -> Estacionamento real
+thick = 3# -> Estacionamento real
+threshold = 200# -> Estacionamento real
+#color = (0,0,255)# -> Maquet
+#thick = 2# -> Maquet
+#threshold = 60# -> Maquet
 last_call_time = time.time()
 prevFreeslots=0
 
@@ -23,7 +27,8 @@ def convert_grayscale(frame):
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
     # Apply threshold to create a binary image
-    _, binary = cv2.threshold(gray, 110, 255, cv2.THRESH_BINARY)
+    _, binary = cv2.threshold(gray, 110, 255, cv2.THRESH_BINARY)# -> Estacionamento real
+    #_, binary = cv2.threshold(gray, 180, 255, cv2.THRESH_BINARY)# -> Maquet
 
     # Find contours in the binary image
     contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
